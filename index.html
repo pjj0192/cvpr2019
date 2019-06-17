@@ -31,7 +31,8 @@
     function captureFrame() {
       var begin = Date.now();
       cap.read(frame);  // Read a frame from camera
-
+      cv.cvtColor(frame, frameBGR, cv.COLOR_RGBA2BGR);
+      var blob = cv.blobFromImage(frameBGR, 1, {width: 192, height: 144}, [104, 117, 123, 0]);
       // Visualize frame
       cv.imshow(output, frame);
 
